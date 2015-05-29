@@ -23,9 +23,10 @@ key = ""
 
 [session]
 secret = ""
-expires = ""
+expires = 0 
 
 [database]
+driver = "sqlite3"
 path = "/etc/drone/drone.db"
 
 [docker]
