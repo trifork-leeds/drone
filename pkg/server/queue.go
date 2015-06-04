@@ -151,3 +151,20 @@ func GetQueue(c *gin.Context) {
 	items := queue.Items()
 	c.JSON(200, items)
 }
+
+func GetQueueSize(c *gin.Context){
+	queue := ToQueue(c)
+	items := queue.Items()
+	var count int = 0
+	for _, item := range items {
+		if(item.Commit.State == "pending"){
+			count++
+		}
+	}
+	queueLen := Size{count}
+	c.JSON(200, queueLen)
+}
+
+type Size struct {
+	Count int
+}
