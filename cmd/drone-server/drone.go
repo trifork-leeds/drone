@@ -143,7 +143,8 @@ func main() {
 		queue.Use(server.SetSettings(settings))
 		queue.Use(server.SetUpdater(updater))
 		queue.POST("/pull", server.PollBuild)
-
+		queue.GET("/get", server.GetQueue)
+		queue.GET("/count",server.GetQueueSize)
 		push := queue.Group("/push/:owner/:name")
 		{
 			push.Use(server.SetRepo())
